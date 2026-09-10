@@ -12,12 +12,14 @@ A single agent cannot load this monorepo accurately. Inventory found **36** work
 
 Generated trees are not hand-authored source of truth: `packages/client/src/generated/`, `packages/client/src/generated-effect/`, `packages/sdk/js/src/v2/gen/` (`sdk/js/dist` was absent at inventory). Runtime layering (AGENTS.md): Schema → Core and Protocol → Server; Client never Core/Server; `sdk-next` composes Client+Core+Server. Package `opencode` does not runtime-depend on `core` (`devDependency` only).
 
-## Pipeline (already done through T2)
+## Pipeline (T0 → T1 → T2 → W1–W6 leaves → W7 indexes-after-children → REVIEW-SPEC)
 
 1. **T0 inventory** — package list, surfaces, generated roots, dependency-direction quotes, size, slice-hint clusters. No chapter prose. Checker set-compared workspace names.
 2. **T1 chapter map** — greenfield `#chapter-breakdown` numbering (Parts I–VI: §1–2 product, §3–5+§9 design, §6.x components, §7.x+§8 interface, §10.x+§13 ops, §11.x+§12.x+§14 validation). Every T0 package assigned to **exactly one leaf or explicit non-goal**. Indexes vs leaves distinguished. Write waves listed. User chose **full-repo** (not a bounded first product).
 3. **T2 leaf specs** — one task spec + one check spec per **leaf** under `tmp/.../tasks/leaves/` and `checks/leaves/`. Chapter paths: `proj-spec/chapters/{T1 filename}`. Indexes (parent §6, §7, §10, §11, §12, README, open-questions) are **W7**, after children exist.
-4. **Chapter waves** — one worker per leaf; checker is a **fresh** `cursor-grok-4.6-medium` (never high-fast). Parallelize only independent slices. Do not accept a chapter without checker PASS (unless recorded D7 user accept / drop).
+4. **W1–W6 leaves** — one worker per leaf; checker is a **fresh** `cursor-grok-4.6-medium` (never high-fast). Parallelize only independent slices. Do not accept a chapter without checker PASS (unless recorded D7 user accept / drop).
+5. **W7 indexes-after-children** — parent §6, §7, §10, §11, §12, `README.md`, `open-questions.md` after leaf chapters exist.
+6. **REVIEW-SPEC** — wrote `reviews/opencode-spec.md` (verdict PASS). User spec-gate approval is not recorded.
 
 ## Map size (checker-verified)
 
@@ -29,7 +31,7 @@ Generated trees are not hand-authored source of truth: `packages/client/src/gene
 
 | Wave | Slice ids | Notes |
 |------|-----------|--------|
-| W1 | 8, 6.3, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27 | Independent. In progress at handoff (see README). |
+| W1 | 8, 6.3, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27 | Independent. Complete/PASS. |
 | W2 | 6.4, 6.10 | After W1 6.3 / 6.6 / 6.27 PASS (user rework budget 3× Grok medium) |
 | W3 | 6.7, 6.12, 6.2, 6.22, 6.24 | |
 | W4 | 6.5, 6.9, 6.14, 6.17, 6.26 | |
@@ -53,4 +55,4 @@ Composer 2.5 is too lossy for C1 on first draft. **All remaining chapter writers
 
 ## After all leaves
 
-README index (C11), `14-acceptance-criteria.md`, `open-questions.md` (no blocking opens unless truly blocking). Then REVIEW-SPEC: parallel Part checkers plus one contradiction/synthesis checker writing `reviews/opencode-spec.md`. Stop for **user spec-gate approval**. Do not write `implementation-plan.md` until that approval is recorded.
+README index (C11), `14-acceptance.md`, `open-questions.md` (no blocking opens unless truly blocking). REVIEW-SPEC already wrote `reviews/opencode-spec.md` (verdict PASS). Stop for **user spec-gate approval** (not recorded). Extra reviews R-slice-process / R-slice-coverage are in-progress process work, not a recorded gate PASS. Do not write `implementation-plan.md` until spec-gate approval is recorded.
