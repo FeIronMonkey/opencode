@@ -17,7 +17,7 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W1 of 7 write waves. Checker **PASS**: §8, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25. **6.3, 6.6, 6.27** not yet accepted — user authorized up to 3 Grok 4.6 rework passes each (see [HANDOFF.md](HANDOFF.md)). Do not treat those three as REVIEW-SPEC-ready until checker PASS.
+W1 of 7 write waves. Checker **PASS**: §8, 6.3, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27. **6.6** not yet accepted — user authorized up to 3 Grok 4.6 rework passes (see [HANDOFF.md](HANDOFF.md)). Do not treat 6.6 as REVIEW-SPEC-ready until checker PASS.
 
 ## Part I — Product Definition
 
@@ -41,7 +41,7 @@ Parent index `06-components.md` is W7.
 
 | Chapter | Title | Status |
 |---------|-------|--------|
-| [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | D7 FAIL |
+| [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
 | [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | D7 FAIL |
 | [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
 | [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
@@ -49,7 +49,7 @@ Parent index `06-components.md` is W7.
 | [6.16](chapters/06.16-ui.md) | UI kit | PASS |
 | [6.19](chapters/06.19-desktop.md) | Desktop | PASS |
 | [6.25](chapters/06.25-function.md) | Function worker | PASS |
-| [6.27](chapters/06.27-web.md) | Web / docs site | D7 FAIL |
+| [6.27](chapters/06.27-web.md) | Web / docs site | PASS |
 | 6.1–6.2, 6.4–6.5, 6.7, 6.9–6.10, 6.12, 6.14–6.15, 6.17–6.18, 6.20–6.24, 6.26 | *(see slicing waves W2–W5)* | not written |
 
 ## Part IV — Interface
