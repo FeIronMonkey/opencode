@@ -2,7 +2,7 @@
 
 Inbox for unknowns recorded in `proj-spec/chapters/` during the retrospective greenfield spec (C7, C8). Entries are copied from in-chapter `OQ-*` stubs. This file is not a second product spec.
 
-**Open count:** 288. **Blocking (not `none`):** 0.
+**Open count:** 293. **Blocking (not `none`):** 0.
 
 REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No resolutions are recorded here (retrospective; no reconstructed approvals).
 
@@ -36,6 +36,46 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Blocking:** none
 - **Status:** open
 - **Question:** Slice allowed-paths (`README.md`, `package.json`, T1 chapter map) include no tests. No named test encodes goals or `non-goal:2` Storybook exclusion.
+- **Resolution:** *(when resolved)*
+
+### OQ-02-3: Home for `sdks/vscode` and `.vscode/`
+- **Tags:** `proj-spec/chapters/02-goals.md#non-goals`
+- **Discovered in:** RSC-orphan (checker 8e2c65e0)
+- **Blocking:** none
+- **Status:** open
+- **Question:** T1 and leaves 6.8/6.9 do not assign `sdks/vscode` or `.vscode/`. Which existing leaf (if any) should own those paths is unknown. This map records them as non-goals. OQ-5-2 does not name them.
+- **Resolution:** *(when resolved)*
+
+### OQ-02-4: Home for `nix/`, `flake.nix`, `flake.lock`
+- **Tags:** `proj-spec/chapters/02-goals.md#non-goals`
+- **Discovered in:** RSC-orphan (checker 8e2c65e0)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Leaf 10.1 does not own `nix/`, `flake.nix`, or `flake.lock`. Whether those paths belong under 10.1 or stay non-goals is unknown. This map records them as non-goals. OQ-5-2 does not name them.
+- **Resolution:** *(when resolved)*
+
+### OQ-02-5: Home for `sdks/`
+- **Tags:** `proj-spec/chapters/02-goals.md#non-goals`
+- **Discovered in:** RSC-orphan (checker 8e2c65e0)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Non-workspace tree `sdks/` is not 6.8 or 6.9. Which existing leaf (if any) should own `sdks/` is unknown. This map records `sdks/` as a non-goal. OQ-5-2 does not name it.
+- **Resolution:** *(when resolved)*
+
+### OQ-02-6: Home for root `README.*.md` and `screenshot-uk.png`
+- **Tags:** `proj-spec/chapters/02-goals.md#non-goals`
+- **Discovered in:** RSC-orphan (checker 8e2c65e0)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Root `README.*.md` and `screenshot-uk.png` are not leaf 6.27 (`packages/web/`). English `README.md` is leaves 1/2. Which existing leaf (if any) should own the localized files and `screenshot-uk.png` is unknown. This map records them as non-goals. OQ-5-2 does not name them.
+- **Resolution:** *(when resolved)*
+
+### OQ-02-7: Home for `infra/`, `sst.config.ts`, `sst-env.d.ts`, root `github/`
+- **Tags:** `proj-spec/chapters/02-goals.md#non-goals`
+- **Discovered in:** RSC-orphan (checker 8e2c65e0)
+- **Blocking:** none
+- **Status:** open
+- **Question:** `infra/`, `sst.config.ts`, `sst-env.d.ts`, and root `github/` are not leaves 6.21–6.25 (`packages/*`). Which existing leaf (if any) should own those paths is unknown. This map records them as non-goals. OQ-5-2 does not name them.
 - **Resolution:** *(when resolved)*
 
 ### OQ-003-001: Layering tests not in slice sources
