@@ -17,7 +17,7 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W1 of 7 write waves. Checker **PASS**: §8, 6.3, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27. W2 not written yet.
+W1 of 7 write waves. Checker **PASS**: §8, 6.3, 6.4, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27. W2: 6.4 PASS; 6.10 not written.
 
 ## Part I — Product Definition
 
@@ -42,6 +42,7 @@ Parent index `06-components.md` is W7.
 | Chapter | Title | Status |
 |---------|-------|--------|
 | [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
+| [6.4](chapters/06.4-protocol.md) | Protocol | PASS |
 | [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | PASS |
 | [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
 | [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
@@ -50,7 +51,7 @@ Parent index `06-components.md` is W7.
 | [6.19](chapters/06.19-desktop.md) | Desktop | PASS |
 | [6.25](chapters/06.25-function.md) | Function worker | PASS |
 | [6.27](chapters/06.27-web.md) | Web / docs site | PASS |
-| 6.1–6.2, 6.4–6.5, 6.7, 6.9–6.10, 6.12, 6.14–6.15, 6.17–6.18, 6.20–6.24, 6.26 | *(see slicing waves W2–W5)* | not written |
+| 6.1–6.2, 6.5, 6.7, 6.9–6.10, 6.12, 6.14–6.15, 6.17–6.18, 6.20–6.24, 6.26 | *(see slicing waves W2–W5)* | not written |
 
 ## Part IV — Interface
 
