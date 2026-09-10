@@ -17,9 +17,9 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W3 of 7 complete (6.7, 6.12, 6.2, 6.22, 6.24). Checker **PASS**: §8, 6.2, 6.3, 6.4, 6.6, 6.7, 6.8, 6.10, 6.11, 6.12, 6.13, 6.16, 6.19, 6.22, 6.24, 6.25, 6.27. C11: this README is index-only until W7 (parent indexes, full README, `open-questions.md`).
+W4 of 7 complete (6.5, 6.9, 6.14, 6.17, 6.26). Checker **PASS**: §8, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11, 6.12, 6.13, 6.14, 6.16, 6.17, 6.19, 6.22, 6.24, 6.25, 6.26, 6.27. C11: this README is index-only until W7 (parent indexes, full README, `open-questions.md`).
 
-**Return path:** `@spec-driven-greenfield-spec` / A1 / **W4**. Remaining W4: 6.5, 6.9, 6.14, 6.17, 6.26. Do not start W5–W7. Do not expand this README to full C11. Do not start REVIEW-SPEC.
+**Return path:** `@spec-driven-greenfield-spec` / A1 / **W5**. Remaining W5: 6.1, 6.15, 6.18, 6.20, 6.21, 6.23. Do not start W6–W7. Do not expand this README to full C11. Do not start REVIEW-SPEC.
 
 ## Part I — Product Definition
 
@@ -46,20 +46,25 @@ Parent index `06-components.md` is W7.
 | [6.2](chapters/06.2-core.md) | Core | PASS |
 | [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
 | [6.4](chapters/06.4-protocol.md) | Protocol | PASS |
+| [6.5](chapters/06.5-server.md) | Server | PASS |
 | [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | PASS |
 | [6.7](chapters/06.7-client.md) | Client | PASS |
 | [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
+| [6.9](chapters/06.9-sdk-next.md) | SDK Next | PASS |
 | [6.10](chapters/06.10-llm.md) | LLM | PASS |
 | [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
 | [6.12](chapters/06.12-plugin.md) | Plugin | PASS |
 | [6.13](chapters/06.13-codemode.md) | CodeMode | PASS |
+| [6.14](chapters/06.14-tui.md) | TUI | PASS |
 | [6.16](chapters/06.16-ui.md) | UI kit | PASS |
+| [6.17](chapters/06.17-session-ui.md) | Session UI | PASS |
 | [6.19](chapters/06.19-desktop.md) | Desktop | PASS |
 | [6.22](chapters/06.22-console-platform.md) | Console platform | PASS |
 | [6.24](chapters/06.24-stats-backend.md) | Stats backend | PASS |
 | [6.25](chapters/06.25-function.md) | Function worker | PASS |
+| [6.26](chapters/06.26-slack.md) | Slack | PASS |
 | [6.27](chapters/06.27-web.md) | Web / docs site | PASS |
-| 6.1, 6.5, 6.9, 6.14–6.15, 6.17–6.18, 6.20–6.21, 6.23, 6.26 | *(see slicing waves W4–W5)* | not written |
+| 6.1, 6.15, 6.18, 6.20–6.21, 6.23 | *(see slicing wave W5)* | not written |
 
 ## Part IV — Interface
 
