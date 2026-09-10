@@ -21,7 +21,7 @@ Slicing process (committed): `proj-spec/slicing.md`. Partial chapter index: `pro
 ## Mode and process
 
 - **Retrospective greenfield**, not change-mode. Workflow `#retrospective-migration`. Do not reconstruct user approvals. Do not create `initial_spec.md`. Do not change product code.
-- Current phase: `@spec-driven-greenfield-spec` / A1 / **W5 user-authorized D7 rework** of 6.1 and 6.18. T0, T1, T2 accepted via PASS. User chose **full-repo** spec. Branch: `retrospective-spec`.
+- Current phase: `@spec-driven-greenfield-spec` / A1 / **W6**. T0, T1, T2 accepted via PASS. User chose **full-repo** spec. Branch: `retrospective-spec`.
 - Spec-only job. After REVIEW-SPEC PASS: Turn 1 approval request only (no plan handoff in that message).
 
 ## Git / branch (do this first)
@@ -60,31 +60,14 @@ Do **not** read `findings/*.md` bodies, `proj-spec/chapters/*` bodies, or packag
 
 **W4 complete.** 6.5, 6.9, 6.14, 6.17, 6.26 PASS. (6.14: default 3/3 FAIL then one escalated cycle via rewritten task/check spec, attempt 1 PASS `2fbd8735`.)
 
-**W5:** 6.15, 6.20, 6.21, 6.23 PASS (committed). **6.1 and 6.18** exhausted default 3/3. User 2026-09-09 authorized **direct rework, 3 worker attempts per slice**. Oversee those cycles. Drafts untracked: `proj-spec/chapters/06.1-agent-cli.md`, `06.18-app.md`.
+**W5 complete.** 6.1, 6.15, 6.18, 6.20, 6.21, 6.23 PASS.
 
-**Do not start W6** until both 6.1 and 6.18 PASS, or this budget exhausts and you escalate again.
+**Return path: W6.** Remaining leaf ids: 7.1–7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2. Then W7 indexes. Do not start REVIEW-SPEC.
 
-### 6.1 `proj-spec/chapters/06.1-agent-cli.md` — last FAIL checker `a3f88e11`
-
-Worker findings file: `tmp/executive/opencode-retrospective-spec/instructions/w5-6.1-6.18-d7.md`. Last writer `1c316788` (new Task if resume parent-mismatch).
-
-- C1 Construction: `OPENCODE_PRINT_LOGS` / `OPENCODE_LOG_LEVEL` / `OPENCODE_PURE` **then** `Heap.start()` **then** `AGENT` / `OPENCODE` / `OPENCODE_PID` (`packages/opencode/src/index.ts`). Not Heap-first.
-- C1 Yargs `.fail`: unknown/invalid with `err` throws immediately (no help); no `err` → `showHelp` then `exit(1)`.
-- C1 `--fork requires --continue or --session` only on the **non-`--mini`** path (`tui.ts` / `attach.ts`); `--mini` / `runMini` passes `fork` through.
-- C1 Default TUI uses `resolveNetworkOptionsNoConfig` (no `config.server`); `serve` / `web` / `acp` use `resolveNetworkOptions` (loads config).
-
-### 6.18 `proj-spec/chapters/06.18-app.md` — last FAIL checker `c5565e3d`
-
-- C1 `/new-session` is **always** registered on `Routes`; layout split is inside `DraftRoute` (`NewSession` vs legacy directory session), not “new layout only”.
-- C1 Live health poll is `pollMs` in `useServerHealth` (`server-health.ts` / `global.tsx`). `HEALTH_POLL_INTERVAL_MS` in `server.tsx` is unused.
-
-If either slice still FAILs after 3 worker attempts: **stop that slice**, escalate to the user (do not open a fourth pass unless they set another budget). Optional D7 after default exhaustion on a **new** slice: rewrite task+check spec and one escalated cycle of 2 (used for 6.14); this user budget of 3 is already the escalated user cycle — do not add another boss-initiated cycle after it.
-
-After both PASS: commit chapters; README index worker (status tables only, no C11 expansion); then W6 (7.1–7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2) → W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
+After W6 PASS: W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
 
 ## Remaining waves (ids only)
 
-- W5 remaining: 6.1, 6.18 (user D7, 3 attempts each)
 - W6: 7.1, 7.2, 7.3, 7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2
 - W7: indexes 6, 7, 10, 11, 12, README, open-questions (not in T2 leaf specs)
 
@@ -98,8 +81,8 @@ Chapter-path prefix: `proj-spec/chapters/`. Look up filename/allowed-paths in th
 - Accept worker “done” without checker PASS (except recorded D7 user accept/drop)
 - Reconstruct historical user approvals or treat missing `reviews/` as PASS
 - Restart inventory from scratch
-- Start W6 until 6.1 and 6.18 PASS or this 3-attempt budget exhausts
-- Dispatch a 4th attempt on 6.1 or 6.18 unless the user sets a new budget
+- Start W7 until W6 PASS
+- Start REVIEW-SPEC until W7 (indexes, full README, open-questions) is complete
 
 ## Suggested process (in force)
 
