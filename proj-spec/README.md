@@ -17,7 +17,7 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W1 of 7 write waves. Checker **PASS**: §8, 6.3, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27. **6.6** not yet accepted — user authorized up to 3 Grok 4.6 rework passes (see [HANDOFF.md](HANDOFF.md)). Do not treat 6.6 as REVIEW-SPEC-ready until checker PASS.
+W1 of 7 write waves. Checker **PASS**: §8, 6.3, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27. W2 not written yet.
 
 ## Part I — Product Definition
 
@@ -42,7 +42,7 @@ Parent index `06-components.md` is W7.
 | Chapter | Title | Status |
 |---------|-------|--------|
 | [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
-| [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | D7 FAIL |
+| [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | PASS |
 | [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
 | [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
 | [6.13](chapters/06.13-codemode.md) | CodeMode | PASS |
