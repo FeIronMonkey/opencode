@@ -1,13 +1,15 @@
 # OpenCode Specification — Chapter Index
 
-Retrospective spec of **shipped** behavior on the `production` checkout. Not a redesign. Process: [slicing.md](slicing.md). Successor prompt: [HANDOFF.md](HANDOFF.md).
+Retrospective spec of **shipped** OpenCode behavior. Not a redesign. No `initial_spec.md`. Process notes: [slicing.md](slicing.md). Inbox: [open-questions.md](open-questions.md). Successor prompt: [HANDOFF.md](HANDOFF.md).
+
+This README is navigation only. Product contracts live in `proj-spec/chapters/`. Parent indexes: [6 Components](06-components.md), [7 Interface](07-interface.md), [10 Operations](10-operations.md), [11 Examples](11-examples.md), [12 Testing](12-testing.md).
 
 ## How to use these chapters
 
-- Read §1–§3 before writing product code (those leaves are not all written yet).
-- Implement §6 in dependency order once those leaves exist and REVIEW-SPEC has passed **and** the user has approved the spec gate.
-- Validate with §12 and §14 when those files exist.
-- This index is incomplete until W7. Missing map leaves are listed in [slicing.md](slicing.md).
+- Read §1–§3 before writing product code.
+- Implement along §6 in the dependency order recorded in Part II (§3 architecture, §9 design decisions), after REVIEW-SPEC and user spec-gate approval.
+- Use §7–§8 for external API and schema contracts; §10 and §13 for install, generate, and performance.
+- Validate with §11 examples, §12 test locations, and §14 for done-ness.
 
 ## Change history
 
@@ -15,77 +17,88 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 |-------|------|------|-----|
 | *(none yet)* | | | |
 
-## Status (2026-09-09)
+## Status (2026-09-10)
 
-W5 of 7 complete. Checker **PASS**: §8, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11, 6.12, 6.13, 6.14, 6.15, 6.16, 6.17, 6.18, 6.19, 6.20, 6.21, 6.22, 6.23, 6.24, 6.25, 6.26, 6.27. C11: this README is index-only until W7 (parent indexes, full README, `open-questions.md`).
-
-**Return path:** `@spec-driven-greenfield-spec` / A1 / **W6**. Remaining: W6 leaf ids 7.1–7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2. Then W7 indexes. Do not expand this README to full C11. Do not start REVIEW-SPEC.
+W7 / A2 complete. Parent indexes, this chapter index, and `open-questions.md` are written. Next: REVIEW-SPEC. Do not treat this status as a gate verdict or a reconstructed approval.
 
 ## Part I — Product Definition
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| 1 | Overview | not written |
-| 2 | Goals and non-goals | not written |
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [1](chapters/01-overview.md) | Overview | Product one-liner and shipped surfaces. |
+| [2](chapters/02-goals.md) | Goals | Shipped product goals and explicit non-goals. |
 
 ## Part II — Design
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| 3 | Architecture | not written |
-| 4 | Stack | not written |
-| 5 | File tree | not written |
-| 9 | Design decisions | not written |
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [3](chapters/03-architecture.md) | Architecture | Runtime layering Schema → Core/Protocol → Server, Client limits, sdk-next composition. |
+| [4](chapters/04-stack.md) | Stack | Bun workspaces, Turbo pipeline, and workspace catalog pins. |
+| [5](chapters/05-file-tree.md) | File tree | Workspace package paths (not a repository dump). |
+| [9](chapters/09-design-decisions.md) | Design decisions | Recorded workspace layering and generate rules. |
 
 ## Part III — Components
 
-Parent index `06-components.md` is W7.
+Parent index: [6 Components](06-components.md).
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| [6.1](chapters/06.1-agent-cli.md) | Agent CLI | PASS |
-| [6.2](chapters/06.2-core.md) | Core | PASS |
-| [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
-| [6.4](chapters/06.4-protocol.md) | Protocol | PASS |
-| [6.5](chapters/06.5-server.md) | Server | PASS |
-| [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | PASS |
-| [6.7](chapters/06.7-client.md) | Client | PASS |
-| [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
-| [6.9](chapters/06.9-sdk-next.md) | SDK Next | PASS |
-| [6.10](chapters/06.10-llm.md) | LLM | PASS |
-| [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
-| [6.12](chapters/06.12-plugin.md) | Plugin | PASS |
-| [6.13](chapters/06.13-codemode.md) | CodeMode | PASS |
-| [6.14](chapters/06.14-tui.md) | TUI | PASS |
-| [6.15](chapters/06.15-cli.md) | CLI | PASS |
-| [6.16](chapters/06.16-ui.md) | UI kit | PASS |
-| [6.17](chapters/06.17-session-ui.md) | Session UI | PASS |
-| [6.18](chapters/06.18-app.md) | App | PASS |
-| [6.19](chapters/06.19-desktop.md) | Desktop | PASS |
-| [6.20](chapters/06.20-enterprise.md) | Enterprise | PASS |
-| [6.21](chapters/06.21-console-app.md) | Console app | PASS |
-| [6.22](chapters/06.22-console-platform.md) | Console platform | PASS |
-| [6.23](chapters/06.23-stats-app.md) | Stats app | PASS |
-| [6.24](chapters/06.24-stats-backend.md) | Stats backend | PASS |
-| [6.25](chapters/06.25-function.md) | Function worker | PASS |
-| [6.26](chapters/06.26-slack.md) | Slack | PASS |
-| [6.27](chapters/06.27-web.md) | Web / docs site | PASS |
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [6.1](chapters/06.1-agent-cli.md) | Agent CLI | Primary CLI `opencode` and `@opencode-ai/script`. |
+| [6.2](chapters/06.2-core.md) | Core | `@opencode-ai/core` domain. |
+| [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | Effect SQLite + Drizzle Effect SQLite adapters. |
+| [6.4](chapters/06.4-protocol.md) | Protocol | `@opencode-ai/protocol` HttpApi contract. |
+| [6.5](chapters/06.5-server.md) | Server | `@opencode-ai/server` HTTP host. |
+| [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | Build-time HttpApi client generator. |
+| [6.7](chapters/06.7-client.md) | Client | Generated Effect/HTTP clients. |
+| [6.8](chapters/06.8-sdk.md) | Legacy SDK | `@opencode-ai/sdk` HTTP facades and OpenAPI codegen. |
+| [6.9](chapters/06.9-sdk-next.md) | SDK Next | In-process Client+Core+Server host. |
+| [6.10](chapters/06.10-llm.md) | LLM | Schema-first LLM core. |
+| [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | HTTP record/replay. |
+| [6.12](chapters/06.12-plugin.md) | Plugin | Plugin / tool / TUI plugin exports. |
+| [6.13](chapters/06.13-codemode.md) | CodeMode | Confined code execution. |
+| [6.14](chapters/06.14-tui.md) | TUI | Terminal UI. |
+| [6.15](chapters/06.15-cli.md) | CLI | Alternate CLI `lildax`. |
+| [6.16](chapters/06.16-ui.md) | UI kit | Shared UI kit (including generated assets). |
+| [6.17](chapters/06.17-session-ui.md) | Session UI | Session transcript and prompt UI. |
+| [6.18](chapters/06.18-app.md) | App | Web app UI. |
+| [6.19](chapters/06.19-desktop.md) | Desktop | Electron desktop. |
+| [6.20](chapters/06.20-enterprise.md) | Enterprise | Enterprise app. |
+| [6.21](chapters/06.21-console-app.md) | Console app | Cloud console UI. |
+| [6.22](chapters/06.22-console-platform.md) | Console platform | Console core/function/mail/resource/support. |
+| [6.23](chapters/06.23-stats-app.md) | Stats app | Stats SolidStart site. |
+| [6.24](chapters/06.24-stats-backend.md) | Stats backend | `stats-core` + `stats-server`. |
+| [6.25](chapters/06.25-function.md) | Function | `@opencode-ai/function` worker. |
+| [6.26](chapters/06.26-slack.md) | Slack | Slack bot. |
+| [6.27](chapters/06.27-web.md) | Web | Astro/Starlight docs and marketing site. |
 
 ## Part IV — Interface
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| [8](chapters/08-domain-model.md) | Domain model (schema) | PASS |
-| 7.x | External API | not written |
+Parent index: [7 Interface](07-interface.md) (also lists §8).
+
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [7.1](chapters/07.1-http-api.md) | HTTP API | Public HTTP/`HttpApi` (generated trees are not source of truth). |
+| [7.2](chapters/07.2-sdk-api.md) | SDK API | SDK export surface (legacy + next + client). |
+| [7.3](chapters/07.3-cli.md) | CLI | CLI binaries and flags (`opencode`, `lildax`). |
+| [7.4](chapters/07.4-plugin-api.md) | Plugin API | Plugin export surface. |
+| [8](chapters/08-domain-model.md) | Domain model | `@opencode-ai/schema` domain/schema. |
 
 ## Part V — Operations
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| 10.x, 13 | Install, generate, performance | not written |
+Parent index: [10 Operations](10-operations.md) (install and generate only). §13 is listed here, not as a child of §10.
+
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [10.1](chapters/10.1-install.md) | Install | Bins, desktop `main`, workspace install scripts. |
+| [10.2](chapters/10.2-generate.md) | Generate | Regeneration commands (C5). |
+| [13](chapters/13-performance.md) | Performance | Perf only where T0/T1 name it. |
 
 ## Part VI — Validation
 
-| Chapter | Title | Status |
-|---------|-------|--------|
-| 11.x, 12.x, 14 | Examples, testing, acceptance | not written |
+Parent indexes: [11 Examples](11-examples.md), [12 Testing](12-testing.md).
+
+| Chapter | Title | Purpose |
+|---------|-------|---------|
+| [11.1](chapters/11.1-surfaces.md) | Surface examples | Example entrypoints per T0 surface. |
+| [12.1](chapters/12.1-workspace.md) | Workspace tests | Package test locations and `scripts.test` when known. |
+| [14](chapters/14-acceptance.md) | Acceptance | Retrospective acceptance vs shipped surfaces. |
