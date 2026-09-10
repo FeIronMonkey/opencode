@@ -19,7 +19,7 @@ Published CLI bins in this workspace (T1 §7 token `bins`; T0 §3) are `opencode
 | Root package `name` | `opencode` | `package.json` |
 | Root package `description` | `AI-powered development tool` | `package.json`; conflicts with README tagline (T0 contradictions) |
 | Root `private` | `true` | `package.json` |
-| Root `scripts.test` | `echo 'do not run tests from root' && exit 1` | `package.json`; always fails |
+| Root `scripts.test` | `echo 'do not run tests from root' && exit 1` | Canonical in [12.1 Workspace](12.1-workspace.md); `package.json`; always fails |
 | README tagline | `The open source AI coding agent.` | `README.md` (centered paragraph under the logo) |
 | npm badge package | `opencode-ai` | `README.md` shield `https://www.npmjs.com/package/opencode-ai` |
 | T1 leaf `14` | `14-acceptance.md` | T1 §1: “Retrospective acceptance vs shipped surfaces” |
@@ -99,7 +99,7 @@ Whether in-repo user-facing docs beyond this README exist is not established in 
 | Item | Rule | Source |
 |------|------|--------|
 | Storybook (dev) | Not a shipped product surface | T1 §3 `storybook` → `non-goal:2`; T1 §4 primary leaf `non-goal:2` |
-| Root workspace tests | Root `scripts.test` does not run a suite | `package.json` `scripts.test` |
+| Root workspace tests | Root `scripts.test` does not run a suite | Canonical in [12.1 Workspace](12.1-workspace.md); `package.json` `scripts.test` |
 
 T0 §1 product one-liner paraphrases both README and `package.json`; this chapter does not treat that paraphrase as a third independent string.
 
@@ -107,7 +107,7 @@ T0 §1 product one-liner paraphrases both README and `package.json`; this chapte
 
 | Condition | Behavior | Source |
 |-----------|----------|--------|
-| Root `scripts.test` invoked | Prints `do not run tests from root` and exits `1` | `package.json` `scripts.test`: `echo 'do not run tests from root' && exit 1` |
+| Root `scripts.test` invoked | Prints `do not run tests from root` and exits `1` | Canonical in [12.1 Workspace](12.1-workspace.md); `package.json` `scripts.test`: `echo 'do not run tests from root' && exit 1` |
 
 Install-script failure modes, desktop installer errors, and agent permission denials are not specified in allowed paths for this slice.
 
@@ -198,3 +198,4 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 
 - [README.md](../README.md)
 - [11.1 Surfaces](11.1-surfaces.md)
+- [12.1 Workspace](12.1-workspace.md) — canonical for the root `scripts.test` command

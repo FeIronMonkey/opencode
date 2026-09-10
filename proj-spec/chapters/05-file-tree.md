@@ -12,27 +12,11 @@ T1 **multi-leaf packages** consistency token (names only; this chapter does not 
 
 ## Construction / configuration
 
-| Parameter | Shipped value | Notes |
-|-----------|---------------|-------|
-| Root package `name` | `opencode` | `package.json` `name` |
-| Root `private` | `true` | `package.json` `private` |
-| Root `type` | `"module"` | `package.json` `type` |
-| `packageManager` | `bun@1.3.14` | `package.json` `packageManager` |
-| Workspace globs | see [Workspace membership globs](#workspace-membership-globs) | `package.json` `workspaces.packages` |
+Root workspace identity (`name`, `private`, `type`, `packageManager`) and Bun `workspaces.packages` globs are canonical in [4 Stack — Construction / configuration](04-stack.md#construction--configuration). This leaf records package **paths** only.
 
 ### Workspace membership globs
 
-Root `package.json` `workspaces.packages` is this list, in this order:
-
-| Glob |
-|------|
-| `packages/*` |
-| `packages/console/*` |
-| `packages/stats/*` |
-| `packages/sdk/js` |
-| `packages/slack` |
-
-T0 describes the repo as a monorepo managed by Bun workspaces via that field (`T0-inventory.md` §2). This leaf does not specify catalog versions or Turbo (those are §4).
+Canonical glob list: [4 Stack](04-stack.md#construction--configuration) (Workspace membership). T0 describes the repo as a monorepo managed by Bun workspaces via that field (`T0-inventory.md` §2). This leaf does not specify catalog versions or Turbo (those are §4).
 
 ### Workspace package paths
 
@@ -143,7 +127,7 @@ T0 §3 maps product surfaces onto those package directories (for example CLI pri
 
 ## Error handling
 
-Root `package.json` `scripts.test` is `echo 'do not run tests from root' && exit 1`. Allowed sources do not name other layout-time errors (missing globs, extra directories). T0 records that `@opencode-ai/core` declares `bin.opencode` but no matching bin file under `packages/core/bin/` (`T0-inventory.md` Contradictions flagged; `T1-chapter-map.md` §9 OQ-T1-2). This leaf does not invent a tree-walk error for that gap.
+Root `scripts.test` failure is canonical in [4 Stack — Error handling](04-stack.md#error-handling). Allowed sources do not name other layout-time errors (missing globs, extra directories). T0 records that `@opencode-ai/core` declares `bin.opencode` but no matching bin file under `packages/core/bin/` (`T0-inventory.md` Contradictions flagged; `T1-chapter-map.md` §9 OQ-T1-2). This leaf does not invent a tree-walk error for that gap.
 
 ## Verification
 
@@ -162,6 +146,7 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 ## Related chapters
 
 - [README](../README.md)
+- [4 Stack](04-stack.md)
 
 ## Open questions
 

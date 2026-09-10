@@ -2,7 +2,7 @@
 
 Inbox for unknowns recorded in `proj-spec/chapters/` during the retrospective greenfield spec (C7, C8). Entries are copied from in-chapter `OQ-*` stubs. This file is not a second product spec.
 
-**Open count:** 272. **Blocking (not `none`):** 0.
+**Open count:** 288. **Blocking (not `none`):** 0.
 
 REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No resolutions are recorded here (retrospective; no reconstructed approvals).
 
@@ -99,7 +99,7 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** Help snapshots cover yargs/CLI defaults. Untested construction rows remain: `packages/opencode/package.json` `bin`/`scripts`/`imports`, `packages/script/package.json` exports, heap `LIMIT`/`MINUTE`/`Flag.OPENCODE_AUTO_HEAP_SNAPSHOT`, and `ATTACH_FILE_MAX_BYTES`.
+- **Question:** Help snapshots cover yargs/CLI defaults. Untested construction rows remain: `packages/opencode/package.json` `bin`/`scripts`/`imports`, `packages/script/package.json` exports, heap `LIMIT`/`MINUTE`/`Flag.OPENCODE_AUTO_HEAP_SNAPSHOT`, `ATTACH_FILE_MAX_BYTES`, and `startWithPortFallback` prefer-`4096` when resolved `--port` is `0`.
 - **Resolution:** *(when resolved)*
 
 ### OQ-6.1-2: Script package tests
@@ -155,7 +155,7 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** Serve subprocess tests cover listen/health/kill, not the `OPENCODE_SERVER_PASSWORD` unsecured warning or `web` URL printing/`open()`. Default TUI `resolveNetworkOptionsNoConfig(args)` with no config (so `config.server` listen fields unused) is also untested as a listen-resolution case.
+- **Question:** Serve subprocess tests cover listen/health/kill, not the `OPENCODE_SERVER_PASSWORD` unsecured warning, `web` URL printing/`open()`, or `startWithPortFallback` prefer-`4096` when resolved port is `0`. Default TUI `resolveNetworkOptionsNoConfig(args)` with no config (so `config.server` listen fields unused) is also untested as a listen-resolution case.
 - **Resolution:** *(when resolved)*
 
 ### OQ-6.1-9: Script sources outside slice paths
@@ -878,6 +878,14 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Question:** No tests found for auth callback 500, download 404/502, or changelog 503.
 - **Resolution:** *(when resolved)*
 
+### OQ-6.21-19: Non-production docs hostname
+- **Tags:** `proj-spec/chapters/06.21-console-app.md`, `proj-spec/chapters/06.27-web.md`
+- **Discovered in:** REVIEW-SPEC Part IIIb C9 (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Off production, 6.21 proxies `/docs` and `/s/:id` to `docs.dev.opencode.ai`. 6.27 Astro `site` is `https://${SST_STAGE}.opencode.ai` (`SST_STAGE` default `"dev"` → `https://dev.opencode.ai`) with `base` `/docs`. Is `docs.dev.opencode.ai` a DNS alias of `dev.opencode.ai`, or should both chapters name one matching origin?
+- **Resolution:** *(when resolved)*
+
 ### OQ-6.21-2: Parent behavior heading coverage
 - **Tags:** `proj-spec/chapters/06.21-console-app.md`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
@@ -1148,6 +1156,14 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Blocking:** none
 - **Status:** open
 - **Question:** App files import `statModel` from `@opencode-ai/stats-core/domain/model-normalization`, `runtime` from `@opencode-ai/stats-core/runtime`, and `getStatsHomeData` / `getStatsLabData` / `getStatsModelData` / `getStatsModelsComparisonData` from `@opencode-ai/stats-core/domain/home` (C10 overflow; those modules are 6.24). Nested keys such as `Go["2M"]` and `leaderboard["All Users"]["2M"]` are observed at the app call site; `statModel` / `runtime.runPromise` behavior and map shapes belong in 6.24.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.23-12: Stats public origin
+- **Tags:** `proj-spec/chapters/06.21-console-app.md`, `proj-spec/chapters/06.23-stats-app.md`
+- **Discovered in:** REVIEW-SPEC Part IIIb C9 (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** 6.21 `statsProxy` uses `stats.opencode.ai` in production and `stats.dev.opencode.ai` otherwise. 6.23 hardcodes `baseUrl` `https://opencode.ai` with Vite `base` `/data/`. Which public origin (and path) is canonical for the stats site?
 - **Resolution:** *(when resolved)*
 
 ### OQ-6.23-2: Construction test coverage
@@ -1598,6 +1614,110 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Question:** `script/build.ts` invokes an external `bun dev generate` step outside this slice’s allowed paths; the authoritative OpenAPI contract for that input is not specified here.
 - **Resolution:** *(when resolved)*
 
+### OQ-6.8-2: Construction test coverage
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Named coverage for construction is the Session history numeric-query patch test; package exports, launcher option defaults (including `port` `4096`), client config, and the v2 `data` helper are untested in allowed paths.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-3: Package exports tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `packages/sdk/js/package.json` export subpaths or published `files` `dist`.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-4: Server/TUI launcher option defaults
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeServer` defaults `hostname` `"127.0.0.1"`, `port` `4096`, `timeout` `5000`, or `TuiOptions` flag forwarding.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-5: Client config tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeClient` `fetch` timeout wrapper, `x-opencode-directory` / `x-opencode-workspace` headers, or `createOpencode` passing `server.url`.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-6: v2 `data` helper tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `data.message.user` placeholder ids `"asdasd"` or `role: "user"`.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-7: Parent behavior heading coverage
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found that encode `## Behavior` as a whole (HTTP facades, interceptors, local server/TUI launchers, process utilities).
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-8: HTTP client facade tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeClient` wrapping generated `OpencodeClient` with interceptors.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-9: Request interceptor tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for v1/v2 `rewrite` GET/HEAD directory/workspace query rewrite or header strip.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-10: v2 HTML response interceptor tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for the v2 `text/html` error `"Request is not supported by this version of OpenCode Server (Server responded with text/html)"`.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-11: Local server launcher tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeServer` spawn of `opencode serve`, listen-line URL parse, timeout, or early-exit errors.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-12: TUI launcher tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeTui` spawn flags, `stdio: "inherit"`, or `close()`.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-13: Process utility tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `stop` Windows `taskkill` vs `proc.kill()`, or `bindAbort` cleanup.
+- **Resolution:** *(when resolved)*
+
+### OQ-6.8-14: SDK error-handling tests
+- **Tags:** `proj-spec/chapters/06.8-sdk.md`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** No tests found for `createOpencodeServer` timeout/parse/exit errors, v2 HTML interceptor, or `wrapClientError` `throwOnError` formatting.
+- **Resolution:** *(when resolved)*
+
 ### OQ-6.9-001: Manifest, SST stub, and constructor options
 - **Tags:** `proj-spec/chapters/06.9-sdk-next.md`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
@@ -2020,6 +2140,14 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Blocking:** none
 - **Status:** open
 - **Question:** Named CLI tests cover `lildax` `api` resolution only. No tests found in `packages/opencode/**/*.{test,spec}.*` for `bin/opencode`, default `$0` TUI, `serve` listen log, or `web` `open(...)`.
+- **Resolution:** *(when resolved)*
+
+### OQ-11.1-8: Uncovered error-table rows
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#error-handling`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Named tests encode `Missing path parameter` (`rejects a missing path parameter`) and `INTERACTIVE_INPUT_ERROR` (`throws a clear error when no controlling terminal is available`). No tests found that encode the remaining error-table rows: bin wrapper native-resolve / child `error` messages, primary CLI `Unexpected error`, `serve`/`web` `OPENCODE_SERVER_PASSWORD` warnings, SDK `Timeout waiting for server to start after ${options.timeout}ms` / `Failed to parse server url from output` / `Server exited with code`, `lildax api` `Invalid header, expected name:value`, desktop `Sidecar did not become ready within 60000ms` / `Failed to get port`, or Slack `Sorry, I had trouble creating a session` / `Sorry, I had trouble processing your message`.
 - **Resolution:** *(when resolved)*
 
 ### OQ-12.1-1: Root test command coverage

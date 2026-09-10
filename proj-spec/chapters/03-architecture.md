@@ -10,7 +10,7 @@ This chapter is the runtime **layering** contract for the packages named in the 
 
 ## Construction / configuration
 
-These packages are first-party workspace members via root `package.json` `workspaces.packages` entry `packages/*`.
+These packages are first-party workspace members under the `packages/*` glob. Canonical Bun workspace membership is [4 Stack — Construction / configuration](04-stack.md#construction--configuration).
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
@@ -79,7 +79,7 @@ Client runtime code may depend on Schema and Protocol but never Core or Server (
 
 ## Error handling
 
-`AGENTS.md` and the listed `package.json` files do not define an error string, HTTP status, or process exit code for a runtime-layering violation. Root `package.json` `scripts.test` is `echo 'do not run tests from root' && exit 1`; that exit is the workspace test-from-root guard, not a Schema/Core/Protocol/Server import check.
+`AGENTS.md` and the listed `package.json` files do not define an error string, HTTP status, or process exit code for a runtime-layering violation. The workspace test-from-root guard is specified in [4 Stack — Error handling](04-stack.md#error-handling); that exit is not a Schema/Core/Protocol/Server import check.
 
 ## Verification
 
@@ -106,9 +106,11 @@ Allowed source paths for this slice do not include test files.
 ## Related chapters
 
 - [README.md](../README.md)
+- [4 Stack](04-stack.md)
 - [6.2 Core](06.2-core.md)
 - [6.4 Protocol](06.4-protocol.md)
 - [6.5 Server](06.5-server.md)
 - [6.7 Client](06.7-client.md)
 - [6.9 sdk-next](06.9-sdk-next.md)
 - [8 Domain model](08-domain-model.md)
+- [9 Design decisions](09-design-decisions.md)

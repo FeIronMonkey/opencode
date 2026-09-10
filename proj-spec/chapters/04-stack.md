@@ -23,7 +23,7 @@ Root package identity (`package.json`):
 | `$schema` | `https://json.schemastore.org/package.json` | |
 | `repository.url` | `https://github.com/anomalyco/opencode` | `type` `git` |
 
-Workspace membership (`package.json` `workspaces.packages`):
+Workspace membership (`package.json` `workspaces.packages`; canonical for Bun workspace globs):
 
 | Glob | Notes |
 |------|-------|
@@ -32,6 +32,8 @@ Workspace membership (`package.json` `workspaces.packages`):
 | `packages/stats/*` | Nested stats packages |
 | `packages/sdk/js` | Explicit SDK JS package path |
 | `packages/slack` | Explicit Slack package path |
+
+Package directory tables (paths, not globs): [5 File tree](05-file-tree.md#workspace-package-paths).
 
 Workspace catalog pins (`package.json` `workspaces.catalog`). Values are the catalog strings as shipped:
 
@@ -212,9 +214,9 @@ Type checking (`AGENTS.md` Type Checking): always run `bun typecheck` from packa
 
 Testing (`AGENTS.md` Testing): tests cannot run from repo root (guard: `do-not-run-tests-from-root`); run from package dirs like `packages/opencode`. The root `test` script prints `do not run tests from root` and exits `1` (`package.json` `scripts.test`).
 
-Runtime dependency direction (`AGENTS.md`): Keep runtime dependencies directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime code may depend on Schema and Protocol but never Core or Server; `sdk-next` composes Client, Core, and Server.
+Runtime dependency direction (canonical): [3 Architecture — Runtime dependency direction](03-architecture.md#runtime-dependency-direction) (also Client runtime vs Core/Server and sdk-next composition in that chapter).
 
-Default branch (`AGENTS.md`): The default branch in this repo is `dev`. Local `main` ref may not exist; use `dev` or `origin/dev` for diffs.
+Default branch (canonical): [9 Design decisions](09-design-decisions.md#construction--configuration) (table) and [Default branch for diffs](09-design-decisions.md#default-branch-for-diffs).
 
 ## Error handling
 
@@ -244,7 +246,7 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 - **Discovered in:** retrospective spec slice 4
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found in allowed paths for Turbo `typecheck`/`build`/`#test` tasks, `bun typecheck` vs `tsc`, runtime dependency direction, or default branch `dev`.
+- **Question:** No tests found in allowed paths for Turbo `typecheck`/`build`/`#test` tasks or `bun typecheck` vs `tsc`.
 
 ### OQ-4-3: Root test-script guard tests
 
@@ -257,3 +259,6 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 ## Related chapters
 
 - [README.md](../README.md)
+- [3 Architecture](03-architecture.md)
+- [5 File tree](05-file-tree.md)
+- [9 Design decisions](09-design-decisions.md)

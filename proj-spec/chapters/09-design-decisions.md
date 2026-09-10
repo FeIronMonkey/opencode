@@ -30,7 +30,7 @@ Canonical home for workspace generate **commands** as an operations catalog is T
 
 ### Runtime dependency direction
 
-Runtime dependencies MUST stay directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime MAY depend on Schema and Protocol but MUST NOT depend on Core or Server. `sdk-next` composes Client, Core, and Server (`AGENTS.md`; T1 **dep direction** token, `T1-chapter-map.md` §7).
+Canonical runtime layering (manifests + direction) is [3 Architecture — Runtime dependency direction](03-architecture.md#runtime-dependency-direction) (T1 **dep direction** token, `T1-chapter-map.md` §7). This leaf does not restate that MUST.
 
 T1 lists the multi-leaf package names `schema`, `core`, `protocol`, `server`, `client`, `sdk`, `sdk-next`, `plugin`, `ui` (`T1-chapter-map.md` §7). This leaf does not re-home those packages.
 
@@ -54,11 +54,11 @@ The default branch in this repo is `dev`. When comparing, use `dev` or `origin/d
 - **Discovered in:** retrospective spec slice 9
 - **Blocking:** none
 - **Status:** open
-- **Question:** Allowed paths contain no tests that assert dependency direction, generate commands, do-not-edit generated dirs, or default branch `dev`.
+- **Question:** Allowed paths contain no tests that assert generate commands, do-not-edit generated dirs, or default branch `dev`.
 
 ## Error handling
 
-`AGENTS.md` and `T1-chapter-map.md` name no error strings, HTTP statuses, or exit codes for violating dependency direction, editing generated trees, skipping generate, or using a non-`dev` branch.
+`AGENTS.md` and `T1-chapter-map.md` name no error strings, HTTP statuses, or exit codes for editing generated trees, skipping generate, or using a non-`dev` branch. Layering-violation diagnostics, if any, are not specified on the canonical leaf ([3 Architecture — Error handling](03-architecture.md#error-handling)).
 
 ### OQ-9-003: Error-handling coverage
 
@@ -88,3 +88,5 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 ## Related chapters
 
 - [README](../README.md)
+- [3 Architecture](03-architecture.md)
+- [4 Stack](04-stack.md)
