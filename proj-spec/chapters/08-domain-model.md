@@ -6,7 +6,7 @@
 
 **File:** `packages/schema/` (`packages/schema/src/index.ts`, `packages/schema/package.json`)
 
-This chapter is a **retrospective** description of shipped Schema behavior (C8). Canonical home for the `@opencode-ai/schema` package. Runtime services, HTTP, and UI live in other chapters; this leaf owns serializable contracts only.
+This chapter is a **retrospective** description of shipped Schema behavior (C8). Canonical home for the `@opencode-ai/schema` package, including `EventManifest` inventories and event types. Runtime services and UI live in other chapters; HTTP SSE payload unions for `/api/event` and `/api/session/:sessionID/event` are [7.1 HTTP API](07.1-http-api.md). This leaf owns serializable contracts only.
 
 T1 assigns `@opencode-ai/schema` to this leaf only (`tmp/executive/opencode-retrospective-spec/findings/T1-chapter-map.md` §2). The name `schema` also appears on T1’s **multi-leaf packages** consistency token because other leaves consume it (`T1-chapter-map.md` §7).
 
@@ -104,7 +104,7 @@ Current top-level `src/*.ts` files other than those four wrappers MUST NOT conta
 
 `EventManifest.ServerDefinitions` length is **55**. `EventManifest.Definitions` length is **85**. `EventManifest.Latest.size` is **85**. `EventManifest.Durable.size` is **32** (`packages/schema/test/event-manifest.test.ts` `owns the complete public event surface`; `packages/schema/src/event-manifest.ts`).
 
-`ServerDefinitions` is `foundationDefinitions` + `featureDefinitions` + `SessionTodo.Event.Definitions` (no V1 live session events, installation, LSP, PermissionV1, TUI, MCP, LegacyEvent, Project.Event, session status, QuestionV1, compaction, VCS, workspace, worktree, or ServerEvent extras that appear only on the full list) (`packages/schema/src/event-manifest.ts`).
+`ServerDefinitions` is `foundationDefinitions` + `featureDefinitions` + `SessionTodo.Event.Definitions` (no V1 live session events, installation, LSP, PermissionV1, TUI, MCP, LegacyEvent, Project.Event, session status, QuestionV1, compaction, VCS, workspace, worktree, or ServerEvent extras that appear only on the full list, including Schema `ServerEvent.Connected` / `server.connected`) (`packages/schema/src/event-manifest.ts`). The HTTP synthetic `server.connected` variant on `/api/event` is [7.1 HTTP API](07.1-http-api.md), not a second inventory here.
 
 `Definitions` concatenates foundation, SessionV1 **live** (non-durable) definitions, installation, feature, todos, LSP, PermissionV1, TUI, MCP, LegacyEvent, Project, session status, QuestionV1, compaction, VCS, workspace, worktree, ServerEvent (`packages/schema/src/event-manifest.ts` `Definitions`).
 
@@ -134,7 +134,7 @@ Canonical lookups (`packages/schema/test/event-manifest.test.ts` `uses canonical
 
 Legacy transient public types: `message.part.delta`, `session.diff`, `session.error`, `permission.asked`, `permission.replied`, `question.asked`, `question.replied`, `question.rejected`, `project.updated`, `command.executed` (`packages/schema/test/legacy-event.test.ts` `owns the legacy transient public definitions`).
 
-Package guide: classify events as `current`, `shared transitional`, or `V1-only` before adding them to a public manifest; being emitted by V1 is not enough for Protocol/SDK Next; keep a single canonical definition (`packages/schema/AGENTS.md` Events). Which events Protocol actually publishes is outside this slice’s allowed paths (see OQ-8-1).
+Package guide: classify events as `current`, `shared transitional`, or `V1-only` before adding them to a public manifest; being emitted by V1 is not enough for Protocol/SDK Next; keep a single canonical definition (`packages/schema/AGENTS.md` Events). Protocol HTTP unions: `GET /api/event` (`event.subscribe`) over `EventManifest.ServerDefinitions` plus HTTP-synthetic `server.connected`, and `GET /api/session/:sessionID/event` (`session.events`) over `SessionEvent.Durable`, are [7.1 HTTP API](07.1-http-api.md). SDK Next publication beyond that HTTP catalog is OQ-8-1.
 
 ### Selected current domain contracts
 
@@ -227,16 +227,17 @@ Verification is the canonical index for decision ↔ coverage (workflow `#spec-a
 - [6.1 Agent CLI](06.1-agent-cli.md)
 - [6.2 Core](06.2-core.md)
 - [6.4 Protocol](06.4-protocol.md)
+- [7.1 HTTP API](07.1-http-api.md)
 - [6.7 Client](06.7-client.md)
 - [6.10 LLM](06.10-llm.md)
 - [6.18 App](06.18-app.md)
 
 ## Open questions
 
-### OQ-8-1 — Protocol / SDK Next event publication
+### OQ-8-1 — SDK Next event publication
 
-- **Unknown:** Which Schema event types Protocol and SDK Next actually expose on `/api/...` (beyond Schema manifests and `packages/schema/AGENTS.md` Events guidance).
-- **Why in-slice paths are insufficient:** `packages/protocol` and SDK packages are outside this leaf’s allowed-paths (C10).
+- **Unknown:** Which Schema event types SDK Next exposes beyond the Protocol HTTP unions in [7.1 HTTP API](07.1-http-api.md) (`EventManifest.ServerDefinitions` plus HTTP-synthetic `server.connected` on `/api/event`; `SessionEvent.Durable` on `/api/session/:sessionID/event`).
+- **Why in-slice paths are insufficient:** SDK Next packages are outside this leaf’s allowed-paths (C10). Protocol `/api/event` and session event HTTP unions are specified in 7.1, not unknown.
 - **Blocking:** none
 
 ### OQ-8-2 — Duplicate event definition throws

@@ -1958,12 +1958,12 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Question:** Call order, defaults, and HTTP/status behavior of hosts that consume these types are not in `packages/plugin/` (except v2 README text cited above). Canonical host behavior belongs in [6.12 Plugin](06.12-plugin.md) or other slices.
 - **Resolution:** *(when resolved)*
 
-### OQ-8-1: Protocol / SDK Next event publication
-- **Tags:** `proj-spec/chapters/08-domain-model.md`
+### OQ-8-1: SDK Next event publication
+- **Tags:** `proj-spec/chapters/08-domain-model.md`, `proj-spec/chapters/07.1-http-api.md`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** Which Schema event types Protocol and SDK Next actually expose on `/api/...` (beyond Schema manifests and `packages/schema/AGENTS.md` Events guidance).
+- **Question:** Which Schema event types SDK Next exposes beyond the Protocol HTTP unions in [7.1 HTTP API](chapters/07.1-http-api.md) (`EventManifest.ServerDefinitions` plus HTTP-synthetic `server.connected` on `/api/event`; `SessionEvent.Durable` on `/api/session/:sessionID/event`). Protocol `/api/...` event publication is specified in 7.1, not unknown.
 - **Resolution:** *(when resolved)*
 
 ### OQ-8-2: Duplicate event definition throws
