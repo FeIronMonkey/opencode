@@ -38,7 +38,7 @@ A T0 surface counts toward shipped-product acceptance when T1 §4 maps it to a p
 | TUI | 6.14 | `@opencode-ai/tui` | `exports["."]` → `./src/index.tsx`; composed by `opencode` dep on `@opencode-ai/tui` |
 | Desktop | 6.19 | `@opencode-ai/desktop` | `main` → `./out/main/index.js`; `packages/desktop/README.md` "built with Electron" |
 | Web app UI | 6.18 | `@opencode-ai/app` | `exports["."]`; root `scripts.dev:web` → `packages/app` |
-| Server / HTTP | 6.5 | `@opencode-ai/server` | `exports["./*"]`; runtime deps: `opencode`, `@opencode-ai/cli`, `@opencode-ai/sdk-next` (`package.json` `dependencies`) |
+| Server / HTTP | 6.5 | `@opencode-ai/server` | `exports["./*"]`; runtime deps: `@opencode-ai/core`, `@opencode-ai/protocol`, `drizzle-orm`, `effect` (canonical in [6.5 Server](06.5-server.md); `packages/server/package.json` `dependencies`) |
 | SDK (legacy HTTP) | 6.8 | `@opencode-ai/sdk` | `exports["."]`, `./v2/client`, `./v2/gen/client` |
 | SDK (in-process) | 6.9 | `@opencode-ai/sdk-next` | `exports["."]` (`packages/sdk-next/README.md`) |
 | Generated clients | 6.7 | `@opencode-ai/client` | `exports["."]`, `./effect` |
@@ -197,5 +197,6 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 ## Related chapters
 
 - [README.md](../README.md)
+- [6.5 Server](06.5-server.md) — canonical runtime deps for `@opencode-ai/server`
 - [11.1 Surfaces](11.1-surfaces.md)
 - [12.1 Workspace](12.1-workspace.md) — canonical for the root `scripts.test` command

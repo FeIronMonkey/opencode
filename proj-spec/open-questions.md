@@ -2054,12 +2054,12 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Question:** Help snapshot covers flags only. No tests found for directory deletion, shell-rc filtering, or package-manager uninstall commands. `Global.Path.*` directory locations are defined in `@opencode-ai/core/global` (outside allowed paths).
 - **Resolution:** *(when resolved)*
 
-### OQ-10.1-8: Desktop main identity and protocol tests
+### OQ-10.1-8: Desktop packaging protocol tests
 - **Tags:** `proj-spec/chapters/10.1-install.md`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found for `requestSingleInstanceLock`, `setAsDefaultProtocolClient("opencode")`, `userData` path, v2 `installCli` staging, or `OPENCODE_BIN_PATH` in the desktop sidecar.
+- **Question:** Builder Linux identities and extraResources CLI are covered by `electron-builder.config.test.ts`. No tests found in this slice for `protocols.schemes` `opencode` or `artifactName` `opencode-desktop-${os}-${arch}.${ext}`. Runtime lock/protocol/sidecar tests belong to `proj-spec/chapters/06.19-desktop.md`.
 - **Resolution:** *(when resolved)*
 
 ### OQ-10.2-1: Workspace orchestrator for generate scripts
@@ -2127,67 +2127,67 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Resolution:** *(when resolved)*
 
 ### OQ-11.1-1: Construction test coverage
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#construction--configuration`, `proj-spec/chapters/11.1-surfaces.md#example-start-hosts`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests in allowed globs assert package `bin` / `scripts.dev` / Vite-Astro ports as a surface-entrypoint matrix.
+- **Question:** No tests in allowed globs assert package `bin` / `scripts.dev` / Vite-Astro start commands as a surface-entrypoint matrix.
 - **Resolution:** *(when resolved)*
 
 ### OQ-11.1-2: Parent behavior heading coverage
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#behavior`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No test names the parent `## Behavior` heading as a whole; coverage is only on nested headings that name tests.
+- **Question:** No test names the parent `## Behavior` heading as a whole.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-3: Desktop and web app start-script tests
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+### OQ-11.1-3: Start-script coverage deferred to 6.x
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#example-start-hosts`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found for `electron-vite dev`, `predev.ts`, Vite `port` `3000` vs AGENTS.md `4444`/`4096`, or sidecar `OPENCODE_SIDECAR_V2` branching as example entrypoints.
+- **Question:** After extra-review, 11.1 only names start commands and points at canonical leaves. Desktop `electron-vite`/`predev`/sidecar and app Vite/`PLAYWRIGHT_*` contracts are owned by 6.19 and 6.18, not by this example-host leaf. This id is not a 11.1 Verification target.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-4: Plugin README and generate-script tests
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+### OQ-11.1-4: In-repo SDK example tests
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#in-repo-example-file`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found under `packages/plugin/**/*.{test,spec}.*`. Client tests cover `OpenCode.make` groups, not `scripts.generate` or `define({ id: "example" })`.
+- **Question:** No tests found that execute `packages/sdk/js/example/example.ts` as an example host.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-5: Hosted-site start tests
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+### OQ-11.1-5: Hosted-site start coverage deferred to 6.x
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#example-start-hosts`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found for Astro `astro dev`, console/enterprise/stats `vite dev` ports, or `SST_STAGE` site URL selection.
+- **Question:** Astro `astro dev`, console/enterprise/stats `vite dev` ports, and `SST_STAGE` / Astro `site` URL selection are owned by 6.27, 6.21, 6.20, and 6.23. 11.1 only points at those start scripts. This id is not a 11.1 Verification target.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-6: Slack bot tests
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+### OQ-11.1-6: Slack bot coverage deferred to 6.x
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#example-start-hosts`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** No tests found under `packages/slack/**/*.{test,spec}.*` for Bolt startup, session create/prompt, or `/test`.
+- **Question:** Bolt startup, session create/prompt, and `/test` are owned by 6.26. 11.1 only names `bun run src/index.ts` as the example start. This id is not a 11.1 Verification target.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-7: Primary CLI serve/web/TUI tests
-- **Tags:** `proj-spec/chapters/11.1-surfaces.md`
+### OQ-11.1-7: Primary CLI serve/web/TUI coverage deferred to 6.x
+- **Tags:** `proj-spec/chapters/11.1-surfaces.md#example-start-hosts`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** Named CLI tests cover `lildax` `api` resolution only. No tests found in `packages/opencode/**/*.{test,spec}.*` for `bin/opencode`, default `$0` TUI, `serve` listen log, or `web` `open(...)`.
+- **Question:** `bin/opencode`, default TUI, `serve` listen, and `web` open behavior are owned by 6.1 (alternate `lildax api` by 6.15). 11.1 only names those bins/scripts. This id is not a 11.1 Verification target.
 - **Resolution:** *(when resolved)*
 
-### OQ-11.1-8: Uncovered error-table rows
+### OQ-11.1-8: Example-leaf error coverage
 - **Tags:** `proj-spec/chapters/11.1-surfaces.md#error-handling`
 - **Discovered in:** leaf chapter Verification / Open questions (retrospective)
 - **Blocking:** none
 - **Status:** open
-- **Question:** Named tests encode `Missing path parameter` (`rejects a missing path parameter`) and `INTERACTIVE_INPUT_ERROR` (`throws a clear error when no controlling terminal is available`). No tests found that encode the remaining error-table rows: bin wrapper native-resolve / child `error` messages, primary CLI `Unexpected error`, `serve`/`web` `OPENCODE_SERVER_PASSWORD` warnings, SDK `Timeout waiting for server to start after ${options.timeout}ms` / `Failed to parse server url from output` / `Server exited with code`, `lildax api` `Invalid header, expected name:value`, desktop `Sidecar did not become ready within 60000ms` / `Failed to get port`, or Slack `Sorry, I had trouble creating a session` / `Sorry, I had trouble processing your message`.
+- **Question:** This chapter only points at 6.x error tables. No tests encode an 11.1-owned error string because this leaf no longer owns those strings.
 - **Resolution:** *(when resolved)*
 
 ### OQ-12.1-1: Root test command coverage
