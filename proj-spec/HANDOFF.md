@@ -21,7 +21,7 @@ Slicing process (committed): `proj-spec/slicing.md`. Partial chapter index: `pro
 ## Mode and process
 
 - **Retrospective greenfield**, not change-mode. Workflow `#retrospective-migration`. Do not reconstruct user approvals. Do not create `initial_spec.md`. Do not change product code.
-- Current phase: `@spec-driven-greenfield-spec` / A1 / **W3 blocked on 6.24 user decision**. T0, T1, T2 accepted via PASS. User chose **full-repo** spec. Branch: `retrospective-spec`.
+- Current phase: `@spec-driven-greenfield-spec` / A1 / **W5 user-authorized D7 rework** of 6.1 and 6.18. T0, T1, T2 accepted via PASS. User chose **full-repo** spec. Branch: `retrospective-spec`.
 - Spec-only job. After REVIEW-SPEC PASS: Turn 1 approval request only (no plan handoff in that message).
 
 ## Git / branch (do this first)
@@ -37,7 +37,7 @@ Confirm branch **`retrospective-spec`**. Spec work was started from `production`
 - Recommended boss tier: high judgment. Prior session model: Cursor Grok 4.6.
 - **Chapter writers (remaining leaves): `cursor-grok-4.6-medium` only.** Composer 2.5 failed C1 on nearly every W1 first draft. Do not send remaining chapters to Composer.
 - Checkers: **`cursor-grok-4.6-medium` only**. Never `cursor-grok-4.6-high-fast`. Fresh checker every check. Checker prompts must not include worker self-reports.
-- Task `resume` cannot change model; new model ⇒ new Task, not resume.
+- Task `resume` cannot change model; new model ⇒ new Task, not resume. Cross-session `resume` often fails **parent mismatch** — then launch a **new** Task (do not resume Composer).
 - Cursor Task has no `readonly` flag; instruct checkers not to edit.
 
 ## Read first (orchestration only)
@@ -45,7 +45,7 @@ Confirm branch **`retrospective-spec`**. Spec work was started from `production`
 - `tmp/tasks.md`
 - `tmp/executive/opencode-retrospective-spec/ledger.md`
 - `tmp/executive/opencode-retrospective-spec/constitution.md`
-- `tmp/executive/opencode-retrospective-spec/instructions/` (worker-base, checker-base, chapter-writer, chapter-checker, chapter-task-template, chapter-check-template)
+- `tmp/executive/opencode-retrospective-spec/instructions/` (worker-base, checker-base, chapter-writer, chapter-checker, chapter-task-template, chapter-check-template, w4-writer, w4-checker, w5-6.1-6.18-d7)
 - Per-leaf specs: `tasks/leaves/{id}.md`, `checks/leaves/{id}.md`
 
 Do **not** read `findings/*.md` bodies, `proj-spec/chapters/*` bodies, or package sources. Consume checker-verified summaries and `proj-spec/README.md` status tables only.
@@ -56,21 +56,35 @@ Do **not** read `findings/*.md` bodies, `proj-spec/chapters/*` bodies, or packag
 
 **W2 complete.** 6.4, 6.10 PASS.
 
-**W3:** 6.7, 6.12, 6.2, 6.22 PASS. **6.24 escalated to the user** after 3 worker attempts. Do **not** dispatch a 4th 6.24 worker unless the user sets a new budget.
+**W3 complete.** 6.7, 6.12, 6.2, 6.22, 6.24 PASS. (6.24 user D7: 3 attempts authorized; PASS on attempt 1, checker `60c2b8fd`.)
 
-### 6.24 `proj-spec/chapters/06.24-stats-backend.md` — last FAIL checker `0b63ef13`
+**W4 complete.** 6.5, 6.9, 6.14, 6.17, 6.26 PASS. (6.14: default 3/3 FAIL then one escalated cycle via rewritten task/check spec, attempt 1 PASS `2fbd8735`.)
 
-- Related-chapter 6.23 link is `06.23-stats-site.md` but T1 map says `06.23-stats-app.md`.
+**W5:** 6.15, 6.20, 6.21, 6.23 PASS (committed). **6.1 and 6.18** exhausted default 3/3. User 2026-09-09 authorized **direct rework, 3 worker attempts per slice**. Oversee those cycles. Drafts untracked: `proj-spec/chapters/06.1-agent-cli.md`, `06.18-app.md`.
 
-**Do not start W4** until 6.24 has a recorded user decision (accept / drop / direct rework with budget).
+**Do not start W6** until both 6.1 and 6.18 PASS, or this budget exhausts and you escalate again.
 
-After 6.24 is resolved: W4 (6.5, 6.9, 6.14, 6.17, 6.26) → W5 → W6 → W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
+### 6.1 `proj-spec/chapters/06.1-agent-cli.md` — last FAIL checker `a3f88e11`
+
+Worker findings file: `tmp/executive/opencode-retrospective-spec/instructions/w5-6.1-6.18-d7.md`. Last writer `1c316788` (new Task if resume parent-mismatch).
+
+- C1 Construction: `OPENCODE_PRINT_LOGS` / `OPENCODE_LOG_LEVEL` / `OPENCODE_PURE` **then** `Heap.start()` **then** `AGENT` / `OPENCODE` / `OPENCODE_PID` (`packages/opencode/src/index.ts`). Not Heap-first.
+- C1 Yargs `.fail`: unknown/invalid with `err` throws immediately (no help); no `err` → `showHelp` then `exit(1)`.
+- C1 `--fork requires --continue or --session` only on the **non-`--mini`** path (`tui.ts` / `attach.ts`); `--mini` / `runMini` passes `fork` through.
+- C1 Default TUI uses `resolveNetworkOptionsNoConfig` (no `config.server`); `serve` / `web` / `acp` use `resolveNetworkOptions` (loads config).
+
+### 6.18 `proj-spec/chapters/06.18-app.md` — last FAIL checker `c5565e3d`
+
+- C1 `/new-session` is **always** registered on `Routes`; layout split is inside `DraftRoute` (`NewSession` vs legacy directory session), not “new layout only”.
+- C1 Live health poll is `pollMs` in `useServerHealth` (`server-health.ts` / `global.tsx`). `HEALTH_POLL_INTERVAL_MS` in `server.tsx` is unused.
+
+If either slice still FAILs after 3 worker attempts: **stop that slice**, escalate to the user (do not open a fourth pass unless they set another budget). Optional D7 after default exhaustion on a **new** slice: rewrite task+check spec and one escalated cycle of 2 (used for 6.14); this user budget of 3 is already the escalated user cycle — do not add another boss-initiated cycle after it.
+
+After both PASS: commit chapters; README index worker (status tables only, no C11 expansion); then W6 (7.1–7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2) → W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
 
 ## Remaining waves (ids only)
 
-- W3 remaining: 6.24 (blocked — user decision required)
-- W4: 6.5, 6.9, 6.14, 6.17, 6.26
-- W5: 6.1, 6.15, 6.18, 6.20, 6.21, 6.23
+- W5 remaining: 6.1, 6.18 (user D7, 3 attempts each)
 - W6: 7.1, 7.2, 7.3, 7.4, 3, 4, 5, 9, 10.1, 10.2, 13, 11.1, 12.1, 14, 1, 2
 - W7: indexes 6, 7, 10, 11, 12, README, open-questions (not in T2 leaf specs)
 
@@ -84,8 +98,8 @@ Chapter-path prefix: `proj-spec/chapters/`. Look up filename/allowed-paths in th
 - Accept worker “done” without checker PASS (except recorded D7 user accept/drop)
 - Reconstruct historical user approvals or treat missing `reviews/` as PASS
 - Restart inventory from scratch
-- Dispatch a 4th 6.24 worker unless the user sets a new budget
-- Start W4 until 6.24 has a recorded user decision (accept / drop / direct rework with budget)
+- Start W6 until 6.1 and 6.18 PASS or this 3-attempt budget exhausts
+- Dispatch a 4th attempt on 6.1 or 6.18 unless the user sets a new budget
 
 ## Suggested process (in force)
 
