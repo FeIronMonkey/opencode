@@ -2,7 +2,7 @@
 
 Inbox for unknowns recorded in `proj-spec/chapters/` during the retrospective greenfield spec (C7, C8). Entries are copied from in-chapter `OQ-*` stubs. This file is not a second product spec.
 
-**Open count:** 293. **Blocking (not `none`):** 0.
+**Open count:** 294. **Blocking (not `none`):** 0.
 
 REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No resolutions are recorded here (retrospective; no reconstructed approvals).
 
@@ -2060,6 +2060,14 @@ REVIEW-SPEC may proceed while these remain `open` with `Blocking: none`. No reso
 - **Blocking:** none
 - **Status:** open
 - **Question:** Builder Linux identities and extraResources CLI are covered by `electron-builder.config.test.ts`. No tests found in this slice for `protocols.schemes` `opencode` or `artifactName` `opencode-desktop-${os}-${arch}.${ext}`. Runtime lock/protocol/sidecar tests belong to `proj-spec/chapters/06.19-desktop.md`.
+- **Resolution:** *(when resolved)*
+
+### OQ-10.1-9: `UpgradeCommand` handler tests
+- **Tags:** `proj-spec/chapters/10.1-install.md#opencode-upgrade`
+- **Discovered in:** leaf chapter Verification / Open questions (retrospective)
+- **Blocking:** none
+- **Status:** open
+- **Question:** Help snapshot covers `upgrade [target]`, `--method`/`-m` choices (`curl`/`npm`/`pnpm`/`bun`/`brew`/`choco`/`scoop`, no `yarn`). No tests found for leading-`v` strip, unknown-method `Install anyways?` (`initialValue: false`), skip-when-same-version warn `opencode upgrade skipped: ${target} is already installed`, or choco UI `Please run the terminal as Administrator and try again`.
 - **Resolution:** *(when resolved)*
 
 ### OQ-10.2-1: Workspace orchestrator for generate scripts
