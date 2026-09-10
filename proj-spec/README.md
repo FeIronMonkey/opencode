@@ -17,9 +17,9 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W2 of 7 complete (6.4, 6.10). Checker **PASS**: §8, 6.3, 6.4, 6.6, 6.8, 6.10, 6.11, 6.12, 6.13, 6.16, 6.19, 6.22, 6.25, 6.27. W3 remaining (not yet PASS): 6.7, 6.2, 6.24. C11: this README is index-only until W7 (parent indexes, full README, `open-questions.md`).
+W2 of 7 complete (6.4, 6.10). Checker **PASS**: §8, 6.2, 6.3, 6.4, 6.6, 6.7, 6.8, 6.10, 6.11, 6.12, 6.13, 6.16, 6.19, 6.22, 6.25, 6.27. W3 remaining (not yet PASS): 6.24. C11: this README is index-only until W7 (parent indexes, full README, `open-questions.md`).
 
-**Return path:** `@spec-driven-greenfield-spec` / A1 / **W3**. Dispatch chapter writers for 6.7, 6.2, 6.24 (`cursor-grok-4.6-medium`; fresh checker per leaf). Do not start W4–W7. Do not expand this README to full C11. Do not start REVIEW-SPEC.
+**Return path:** `@spec-driven-greenfield-spec` / A1 / **W3**. Dispatch chapter writer for 6.24 (`cursor-grok-4.6-medium`; fresh checker per leaf). Do not start W4–W7. Do not expand this README to full C11. Do not start REVIEW-SPEC.
 
 ## Part I — Product Definition
 
@@ -43,9 +43,11 @@ Parent index `06-components.md` is W7.
 
 | Chapter | Title | Status |
 |---------|-------|--------|
+| [6.2](chapters/06.2-core.md) | Core | PASS |
 | [6.3](chapters/06.3-sqlite-adapters.md) | SQLite adapters | PASS |
 | [6.4](chapters/06.4-protocol.md) | Protocol | PASS |
 | [6.6](chapters/06.6-httpapi-codegen.md) | HTTP API codegen | PASS |
+| [6.7](chapters/06.7-client.md) | Client | PASS |
 | [6.8](chapters/06.8-sdk.md) | Legacy SDK | PASS |
 | [6.10](chapters/06.10-llm.md) | LLM | PASS |
 | [6.11](chapters/06.11-http-recorder.md) | HTTP recorder | PASS |
@@ -56,7 +58,7 @@ Parent index `06-components.md` is W7.
 | [6.22](chapters/06.22-console-platform.md) | Console platform | PASS |
 | [6.25](chapters/06.25-function.md) | Function worker | PASS |
 | [6.27](chapters/06.27-web.md) | Web / docs site | PASS |
-| 6.1–6.2, 6.5, 6.7, 6.9, 6.14–6.15, 6.17–6.18, 6.20–6.21, 6.23–6.24, 6.26 | *(see slicing waves W3–W5)* | not written |
+| 6.1, 6.5, 6.9, 6.14–6.15, 6.17–6.18, 6.20–6.21, 6.23–6.24, 6.26 | *(see slicing waves W3–W5)* | not written |
 
 ## Part IV — Interface
 
