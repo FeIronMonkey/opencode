@@ -27,7 +27,7 @@ Slicing process (committed): `proj-spec/slicing.md`. Chapter index: `proj-spec/R
 
 Confirm branch **`retrospective-spec`**. Spec work was started from `production` @ `73cfa68b75`. Progress commits belong on `retrospective-spec`, **not** on `production`. Spec this checkout’s tree unless the user says otherwise.
 
-HEAD at last session pause: **`06aa148977`** `docs(spec): record REVIEW-SPEC PASS` (W7 indexes `1d6afafa7c`; REVIEW-SPEC artifact + Part-fix chapters). Working tree should be clean of untracked spec drafts.
+Latest spec pause: this handoff file. REVIEW-SPEC PASS commit: **`06aa148977`**. W7 indexes: `1d6afafa7c`. After you commit an updated handoff, HEAD will move; do not treat an older SHA in a previous paste as current. Working tree should be clean of untracked spec drafts.
 
 **Commit regularly** as extra-review waves get checker PASS (user 2026-09-09). Conventional commits, e.g. `docs(spec): accept slice-process review`. Do not commit gitignored `tmp/` unless the user explicitly asks to force-add it. Do not push unless asked. Do not force-push.
 
