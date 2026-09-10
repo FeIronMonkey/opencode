@@ -94,7 +94,7 @@ If a related project uses `opencode` as part of its name, README asks that proje
 
 ## Error handling
 
-Root `package.json` `scripts.test` is `echo 'do not run tests from root' && exit 1`. Invoking the workspace `test` script prints that message and exits with status `1`.
+Root `package.json` `scripts.test` / do-not-run-tests-from-root is canonical in [12.1 Workspace — Root test command](12.1-workspace.md#root-test-command). This chapter does not specify that command.
 
 README does not define product error codes, HTTP statuses, or CLI exit codes.
 
@@ -113,6 +113,7 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 ## Related chapters
 
 - [README](../README.md)
+- [12.1 Workspace](12.1-workspace.md) — canonical for root `scripts.test`
 
 ## Open questions
 

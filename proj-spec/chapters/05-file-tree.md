@@ -127,7 +127,7 @@ T0 §3 maps product surfaces onto those package directories (for example CLI pri
 
 ## Error handling
 
-Root `scripts.test` failure is canonical in [4 Stack — Error handling](04-stack.md#error-handling). Allowed sources do not name other layout-time errors (missing globs, extra directories). T0 records that `@opencode-ai/core` declares `bin.opencode` but no matching bin file under `packages/core/bin/` (`T0-inventory.md` Contradictions flagged; `T1-chapter-map.md` §9 OQ-T1-2). This leaf does not invent a tree-walk error for that gap.
+Root `scripts.test` failure is canonical in [12.1 Workspace — Error handling](12.1-workspace.md#error-handling). Allowed sources do not name other layout-time errors (missing globs, extra directories). T0 records that `@opencode-ai/core` declares `bin.opencode` but no matching bin file under `packages/core/bin/` (`T0-inventory.md` Contradictions flagged; `T1-chapter-map.md` §9 OQ-T1-2). This leaf does not invent a tree-walk error for that gap.
 
 ## Verification
 
@@ -147,6 +147,7 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 
 - [README](../README.md)
 - [4 Stack](04-stack.md)
+- [12.1 Workspace](12.1-workspace.md) — canonical for root `scripts.test`
 
 ## Open questions
 

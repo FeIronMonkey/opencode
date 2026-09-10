@@ -200,7 +200,7 @@ Root scripts (`package.json` `scripts`):
 | `random` | `echo 'Random script'` |
 | `sso` | `aws sso login --sso-session=opencode --no-browser` |
 | `translate:app` | `bun run script/translate-app.ts` |
-| `test` | `echo 'do not run tests from root' && exit 1` |
+| `test` | Canonical in [12.1 Workspace](12.1-workspace.md#root-test-command) |
 
 ## Behavior
 
@@ -212,7 +212,7 @@ Named Turbo test tasks are only `opencode#test`, `@opencode-ai/core#test`, `@ope
 
 Type checking (`AGENTS.md` Type Checking): always run `bun typecheck` from package directories (example `packages/opencode`); never `tsc` directly.
 
-Testing (`AGENTS.md` Testing): tests cannot run from repo root (guard: `do-not-run-tests-from-root`); run from package dirs like `packages/opencode`. The root `test` script prints `do not run tests from root` and exits `1` (`package.json` `scripts.test`).
+Root `scripts.test` and `AGENTS.md` `do-not-run-tests-from-root` are canonical in [12.1 Workspace — Root test command](12.1-workspace.md#root-test-command).
 
 Runtime dependency direction (canonical): [3 Architecture — Runtime dependency direction](03-architecture.md#runtime-dependency-direction) (also Client runtime vs Core/Server and sdk-next composition in that chapter).
 
@@ -220,7 +220,7 @@ Default branch (canonical): [9 Design decisions](09-design-decisions.md#construc
 
 ## Error handling
 
-The root `test` script is `echo 'do not run tests from root' && exit 1` (`package.json` `scripts.test`). That is the shipped root-test failure: stdout/stderr from that `echo`, process exit code `1`.
+Root `scripts.test` failure is canonical in [12.1 Workspace — Error handling](12.1-workspace.md#error-handling). This chapter does not specify that command.
 
 Allowed sources do not name exit codes or error strings for `lint`, `typecheck`, Turbo tasks, `postinstall`, or other root scripts.
 
@@ -262,3 +262,4 @@ Verification is the **canonical index** for decision ↔ coverage (see workflow 
 - [3 Architecture](03-architecture.md)
 - [5 File tree](05-file-tree.md)
 - [9 Design decisions](09-design-decisions.md)
+- [12.1 Workspace](12.1-workspace.md) — canonical for root `scripts.test`
