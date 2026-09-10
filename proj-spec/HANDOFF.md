@@ -21,7 +21,7 @@ Slicing process (committed): `proj-spec/slicing.md`. Partial chapter index: `pro
 ## Mode and process
 
 - **Retrospective greenfield**, not change-mode. Workflow `#retrospective-migration`. Do not reconstruct user approvals. Do not create `initial_spec.md`. Do not change product code.
-- Current phase: `@spec-driven-greenfield-spec` / A1 / **W1 D7 user gate**. T0, T1, T2 accepted via PASS. User chose **full-repo** spec.
+- Current phase: `@spec-driven-greenfield-spec` / A1 / **W1 user-authorized rework** of 6.3, 6.6, 6.27. T0, T1, T2 accepted via PASS. User chose **full-repo** spec.
 - Spec-only job. After REVIEW-SPEC PASS: Turn 1 approval request only (no plan handoff in that message).
 
 ## Git / branch (do this first)
@@ -54,15 +54,28 @@ Do **not** read `findings/*.md` bodies, `proj-spec/chapters/*` bodies, or packag
 
 Accepted via PASS: **8, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25**.
 
-**D7 — escalated to user** (default 3 + escalated 2 exhausted; **no further boss retry** without a new user budget):
+**User 2026-09-09 authorized rework** of the three remaining W1 FAILs. Record in the ledger: D7 decision = **direct rework**, budget **3 worker attempts per slice** (write → fresh checker → retry with specific findings). Worker and checker: **`cursor-grok-4.6-medium` only** (not Composer, not high-fast). New Task per slice (do not resume Composer workers). Fresh checker every check. Checker prompts must not include worker self-reports. Commit after each slice that PASSes.
 
-- **6.3** last FAIL: C1 unsourced `MigratorInitError` exit codes (cite `session.ts` `migrate`); transaction finalize can replace original body error on rollback failure.
-- **6.6** last FAIL: C4 missing parent `#behavior` Spec-Anchor (C1 identifier/`empty` already fixed).
-- **6.27** last FAIL: C1 OG title encoding — `title.substring(0,700)` then `encodeURIComponent` + `Base64.encode` + `encodeURIComponent`, not Base64-then-truncate.
+Do **not** start W2 until all three are PASS, or this budget is exhausted and you escalate to the user again.
 
-**Do not start W2** until the user says, for those three: accept-as-is, drop from this pass, or rework (user-set attempt budget). Record the decision in the ledger.
+### 6.3 `proj-spec/chapters/06.3-sqlite-adapters.md` — last FAIL `3fbe742c`
 
-Then: W2 (6.4, 6.10) → W3 → W4 → W5 → W6 → W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
+- C1: `MigratorInitError { exitCode: "databaseMigrations" }` and `{ exitCode: "localMigrations" }` were unsourced. Cite `packages/effect-drizzle-sqlite/src/sqlite-core/effect/session.ts` `migrate` (init / `exitCode` around the cited lines from that check).
+- C1: “original failure is preserved after finalize” is false. `EffectSQLiteSession.withTransaction` finalize is `finalize.pipe(Effect.flatMap(() => exit))` in `packages/effect-drizzle-sqlite/src/effect-sqlite/session.ts`. If the body failed **and** rollback / `rollback to savepoint` also fails, the **rollback error replaces** the original body failure.
+
+### 6.6 `proj-spec/chapters/06.6-httpapi-codegen.md` — last FAIL `684c72a1`
+
+- C4: add a Verification Spec-Anchor for parent heading `#behavior` (`## Behavior`), even though child H3s already have lines. Name covering tests or `tests: none found` + OQ `Blocking: none`.
+- Prior C1 (endpoint names / Promise `empty: true` only for `success === "void"`) was already fixed in that check — do not regress.
+
+### 6.27 `proj-spec/chapters/06.27-web.md` — last FAIL `d50d8b7b`
+
+- C1: `#open-graph-images` docs-page title is **not** “Base64-encoded, then truncated to 700 chars.” `packages/web/src/components/Head.astro` does `title.substring(0, 700)`, then `encodeURIComponent`, then `Base64.encode`, then another `encodeURIComponent`. Truncation is on the **raw** title. Same construction for share `encodedTitle` in `s/[id].astro` if that row claims encoding.
+- Non-blocking (fix if cheap): share robots meta is `noindex, nofollow, noarchive, nosnippet`, not only `noindex`. `formatNumber` is locale `Intl` without USD; only `formatCurrency` uses `currency: "USD"`.
+
+If any slice still FAILs after 3 worker attempts: **stop that slice**, escalate to the user again (unshippable or another budget). Do not open a fourth pass.
+
+After all three PASS: W2 (6.4, 6.10) → W3 → W4 → W5 → W6 → W7 indexes/README/OQ. After all map leaves + README + §14 + open-questions: REVIEW-SPEC (parallel Part checkers + one synthesis checker → `reviews/opencode-spec.md`).
 
 ## Remaining waves (ids only)
 
@@ -83,7 +96,8 @@ Chapter-path prefix: `proj-spec/chapters/`. Look up filename/allowed-paths in th
 - Accept worker “done” without checker PASS (except recorded D7 user accept/drop)
 - Reconstruct historical user approvals or treat missing `reviews/` as PASS
 - Restart inventory from scratch
-- Treat D7 FAIL chapters as PASS
+- Treat 6.3 / 6.6 / 6.27 as PASS until a checker on this new budget returns PASS
+- Start W2 while any of those three is still FAIL
 
 ## Suggested process (in force)
 

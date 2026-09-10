@@ -17,7 +17,7 @@ Retrospective spec of **shipped** behavior on the `production` checkout. Not a r
 
 ## Status (2026-09-09)
 
-W1 of 7 write waves. Checker **PASS** (accepted): §8, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25. On disk but **not** accepted (D7 — user disposition required): 6.3, 6.6, 6.27. Do not treat those three as REVIEW-SPEC-ready.
+W1 of 7 write waves. Checker **PASS**: §8, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25. **6.3, 6.6, 6.27** not yet accepted — user authorized up to 3 Grok 4.6 rework passes each (see [HANDOFF.md](HANDOFF.md)). Do not treat those three as REVIEW-SPEC-ready until checker PASS.
 
 ## Part I — Product Definition
 

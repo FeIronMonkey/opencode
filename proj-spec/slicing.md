@@ -30,7 +30,7 @@ Generated trees are not hand-authored source of truth: `packages/client/src/gene
 | Wave | Slice ids | Notes |
 |------|-----------|--------|
 | W1 | 8, 6.3, 6.6, 6.8, 6.11, 6.13, 6.16, 6.19, 6.25, 6.27 | Independent. In progress at handoff (see README). |
-| W2 | 6.4, 6.10 | After W1 disposition |
+| W2 | 6.4, 6.10 | After W1 6.3 / 6.6 / 6.27 PASS (user rework budget 3× Grok medium) |
 | W3 | 6.7, 6.12, 6.2, 6.22, 6.24 | |
 | W4 | 6.5, 6.9, 6.14, 6.17, 6.26 | |
 | W5 | 6.1, 6.15, 6.18, 6.20, 6.21, 6.23 | |
