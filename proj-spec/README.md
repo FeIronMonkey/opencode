@@ -17,9 +17,9 @@ This README is navigation only. Product contracts live in `proj-spec/chapters/`.
 |-------|------|------|-----|
 | *(none yet)* | | | |
 
-## Status (2026-09-10)
+## Status (2026-09-13)
 
-W7 / A2 complete. Parent indexes, this chapter index, and `open-questions.md` are written. Next: REVIEW-SPEC. Do not treat this status as a gate verdict or a reconstructed approval.
+Spec-only retrospective **closed**. REVIEW-SPEC r2 PASS (`reviews/opencode-spec-r2.md`, `c56aa9a3`, commit `41f8a7d85e`). User approved the spec gate 2026-09-13. **No implementation plan from this job** — do not start `@spec-driven-plan` or write `proj-spec/implementation-plan.md` from this README. Historical product code predates the spec (`#retrospective-migration`). Later behavior changes start `@spec-driven-change`. `HANDOFF.md` is a historical extra-review prompt, not current next steps.
 
 ## Part I — Product Definition
 

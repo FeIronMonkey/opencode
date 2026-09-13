@@ -4,7 +4,7 @@
 
 **Mode:** retrospective greenfield (`@spec-driven-greenfield-spec`). Implementation already exists; chapters describe **shipped** behavior. Workflow `#retrospective-migration` applies. No `initial_spec.md`. Product code is not changed for this job.
 
-**Orchestration:** executive-agent job `opencode-retrospective-spec`. Live task/check specs, constitution, and ledger are under gitignored `tmp/executive/opencode-retrospective-spec/` (needed locally to resume). Accepted map details: `findings/T1-chapter-map.md` (checker PASS). Wave cards: `findings/T2-wave-index.md`.
+**Orchestration:** executive-agent job `opencode-retrospective-spec` (closed spec-only 2026-09-13). Historical task/check specs, constitution, and ledger may remain locally under gitignored `tmp/executive/opencode-retrospective-spec/`. Sliced-boss skill spec (kept): `tmp/sliced-boss/`. Accepted map details were `findings/T1-chapter-map.md` (checker PASS). Wave cards: `findings/T2-wave-index.md`.
 
 ## Why slice
 
@@ -19,7 +19,7 @@ Generated trees are not hand-authored source of truth: `packages/client/src/gene
 3. **T2 leaf specs** — one task spec + one check spec per **leaf** under `tmp/.../tasks/leaves/` and `checks/leaves/`. Chapter paths: `proj-spec/chapters/{T1 filename}`. Indexes (parent §6, §7, §10, §11, §12, README, open-questions) are **W7**, after children exist.
 4. **W1–W6 leaves** — one worker per leaf; checker is a **fresh** `cursor-grok-4.6-medium` (never high-fast). Parallelize only independent slices. Do not accept a chapter without checker PASS (unless recorded D7 user accept / drop).
 5. **W7 indexes-after-children** — parent §6, §7, §10, §11, §12, `README.md`, `open-questions.md` after leaf chapters exist.
-6. **REVIEW-SPEC** — wrote `reviews/opencode-spec.md` (verdict PASS). User spec-gate approval is not recorded.
+6. **REVIEW-SPEC** — latest artifact `reviews/opencode-spec-r2.md` (PASS). Spec gate approved 2026-09-13. No plan from this job.
 
 ## Map size (checker-verified)
 
@@ -55,4 +55,4 @@ Composer 2.5 is too lossy for C1 on first draft. **All remaining chapter writers
 
 ## After all leaves
 
-README index (C11), `14-acceptance.md`, `open-questions.md` (no blocking opens unless truly blocking). REVIEW-SPEC already wrote `reviews/opencode-spec.md` (verdict PASS). Stop for **user spec-gate approval** (not recorded). Extra reviews R-slice-process / R-slice-coverage are in-progress process work, not a recorded gate PASS. Do not write `implementation-plan.md` until spec-gate approval is recorded.
+README index (C11), `14-acceptance.md`, `open-questions.md` (no blocking opens unless truly blocking). Extra reviews PASS (`reviews/opencode-slice-process.md`, `reviews/opencode-slice-coverage.md`). Latest REVIEW-SPEC is `reviews/opencode-spec-r2.md` (PASS `c56aa9a3`, commit `41f8a7d85e`); prior `reviews/opencode-spec.md` superseded. User **approved the spec gate 2026-09-13**. This job is **spec-only** — do not write `implementation-plan.md` from this pass; later product changes start `@spec-driven-change`. Session scratch `tmp/tasks.md` is closed per workflow `#tmp-tasks-close` (spec-only analogue; REVIEW-FINAL was not run and is not PASS).

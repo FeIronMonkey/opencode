@@ -9,7 +9,9 @@ node_modules
 .codex
 *~
 playground
-tmp
+tmp/*
+!tmp/sliced-boss/
+!tmp/sliced-boss/**
 dist
 ts-dist
 .turbo
